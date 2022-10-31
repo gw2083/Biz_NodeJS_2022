@@ -30,24 +30,35 @@ router.get("/", (req, res) => {
   });
 });
 
-// 'localhost:3000/city/도시이름' 이라고 요청하면
-router.get("/:name", (req, res) => {
-  const ct_name = req.params.name;
-  const citySelectWhere = "SELECT * FROM city WHERE name = ?";
-  mysql.execute(citySelectWhere, [ct_name], (err, result, f) => {
-    res.json(result);
-  });
-});
-
 /**
  * localhose:3000/city/pop/10000/50000 이라고 요청을하면
  * 인구1만 이상 5만 이하의 도시를 웹으로 Response 하시오
+ * RequestParam 방식으로 데이터 전달하기
+ * 마치 주소가 이미 만들어진 것처럼 보내서 변수를 노출하지 않는다
+ * 최근에 많이 사용되는 방법
+ *
+ * lt : <
+ * gt : >
  */
 router.get("/pop/:min/:max", (req, res) => {
   const min = req.params.min;
   const max = req.params.max;
   const popSelectWhere = "SELECT * FROM city WHERE population BETWEEN ? AND ?";
   mysql.execute(popSelectWhere, [min, max], (err, result, f) => {
+    res.json(result);
+  });
+});
+
+// localhost:3000/city/pop/?gt_pop=10000&lt_pop=50000
+// localhost:3000/city/pop/?lt_pop=10000&gt_pop=50000
+// queryString : 주소표시줄에 '?변수명=값' 형식으로 데이터 전달하기
+// 주소표시줄에 변수명이 노출되므로 보안에 취약하다
+router.get("/pop", (req, res) => {
+  console.log(req.query);
+  const gt_pop = req.query.gt_pop;
+  const lt_pop = req.query.lt_pop;
+  const popSelectWhere = "SELECT * FROM city WHERE population BETWEEN ? AND ?";
+  mysql.execute(popSelectWhere, [lt_pop, gt_pop], (err, result, f) => {
     res.json(result);
   });
 });
@@ -60,4 +71,34 @@ router.get("/country", (req, res) => {
     res.json(data);
   });
 });
+
+/**
+ * http://localhost:3000/country/100/500
+ * 각 국가의 gnp가 100이상 500이하인 국가 리스트 select
+ *
+ * http://localhost:3000/country/100
+ * 각 국가의 gnp가 0이상 100이하인 국가 리스트 select
+ *
+ * 이 두개의 요청을 한개의 router.get()에서 처리
+ */
+
+router.get("/country/:lt_gnp/:gt_gnp", (req, res) => {
+  const lt_gnp = req.params.lt_gnp;
+  const gt_gnp = req.params.gt_gnp;
+  const gnpSelect = "SELECT * FROM country WHERE gnp BETWEEN ? AND ?";
+
+  mysql.execute(gnpSelect, [lt_gnp, gt_gnp], (err, result, f) => {
+    res.json(result);
+  });
+});
+
+// 'localhost:3000/city/도시이름' 이라고 요청하면
+router.get("/:name", (req, res) => {
+  const ct_name = req.params.name;
+  const citySelectWhere = "SELECT * FROM city WHERE name = ?";
+  mysql.execute(citySelectWhere, [ct_name], (err, result, f) => {
+    res.json(result);
+  });
+});
+
 export default router;
