@@ -1,12 +1,18 @@
 {
+  "type": "module",
   "name": "project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./bin/www.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "start": "npm./bin/www.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3"
+  }
 }
