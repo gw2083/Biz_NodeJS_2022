@@ -4,8 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      h1,
+      form,
+      table {
+        width: 80%;
+        margin: 20px auto;
+      }
+
+      td,
+      th {
+        border-bottom: 1px solid#bbb;
+        border-top: 1px solid #bbb;
+      }
+    </style>
   </head>
   <body>
     <h1>반갑습니다</h1>
+    <form method="POST">
+      <lable>국가이름</lable>
+      <input name="c_name" />
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>SEQ</th>
+          <th>Code</th>
+          <th>국가</th>
+          <th>GNP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% countrys.forEach((country,index)=>{ %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= country.Code %></td>
+          <td><%= country.Name %></td>
+          <td><%= country.GNP %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
   </body>
 </html>
