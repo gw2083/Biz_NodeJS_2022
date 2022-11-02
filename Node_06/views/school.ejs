@@ -4,8 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      form,
+      table {
+        width: 80%;
+        margin: 20px auto;
+      }
+      th {
+        background-color: #bbb;
+      }
+      th,
+      td {
+        border-bottom: 1px solid #bbb;
+        border-top: 1px solid #bbb;
+      }
+    </style>
   </head>
   <body>
+    <form method="POST">
+      <label>학생이름</label>
+      <input name="s_name" />
+    </form>
     <table>
       <thead>
         <tr>
