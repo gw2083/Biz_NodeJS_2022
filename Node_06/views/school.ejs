@@ -10,6 +10,7 @@
         width: 80%;
         margin: 20px auto;
       }
+
       th {
         background-color: #bbb;
       }
@@ -24,6 +25,7 @@
     <form method="POST">
       <label>학생이름</label>
       <input name="s_name" />
+      <button class="btn">전체보기</button>
     </form>
     <table>
       <thead>
@@ -50,4 +52,8 @@
       </tbody>
     </table>
   </body>
+  <script>
+    const btnAll = document.querySelector("button.btn");
+    btnAll.addEventListener("click", () => {});
+  </script>
 </html>
