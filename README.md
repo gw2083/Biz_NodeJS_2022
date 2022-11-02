@@ -9,4 +9,4 @@
 
 ## 프로젝트 목록
 
-### :dolphin: 학사정보 프로젝트
+### :dolphin: [학사정보 프로젝트](https://github.com/gw2083/Biz_NodeJS_2022/tree/master/Node_06)
