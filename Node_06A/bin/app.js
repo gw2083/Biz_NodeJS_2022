@@ -4,13 +4,14 @@ import logger from "morgan";
 
 // router import
 import indexRouter from "../routes/index.js";
+import studentRouter from "../routes/student.js";
 
 const app = express();
 
 // app(express)서버에 middle ware 설정하기
 // express 서버가 작동되는데 필요한 중간 도구들 : middle ware
 
-app.use(logger("div"));
+app.use(logger("dev"));
 
 // form 에서 input 데이터를 담아 post로 전송할 때
 // 데이터를 수신하고 req.body 객체로 변환하는 도구
@@ -49,5 +50,6 @@ app.use("/", (req, res, next) => {
 });
 
 app.use("/", indexRouter);
+app.use("/student", studentRouter);
 
 export default app;
