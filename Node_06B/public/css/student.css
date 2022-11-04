@@ -39,3 +39,7 @@ article.student.search form input {
   color: rgb(238, 237, 237);
   text-decoration: none;
 }
+
+table.student {
+  width: 90%;
+}
