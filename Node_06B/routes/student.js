@@ -65,12 +65,15 @@ router.get("/:st_num/detail", (req, res) => {
   const sql = "SELECT * FROM tbl_student WHERE st_num=?";
   mysql.execute(sql, [st_num], (err, student, field) => {
     // res.json(student);
-    res.render("student/st_main", { body: "detail", student });
+    res.render("student/st_main", { body: "detail", student: student[0] });
   });
-  mysql.execute(sql, [st_num], (err, student, field) => {
-    let st = student[0];
-    res.render("student/st_main", { body: "detail", st });
-  });
+});
+
+/**
+ * /student/학번/update 로 request 되면, DB에서 학생정보를 SELECT 하고 st_write 로 보내서 input box 에 정보를 표시하기
+ */
+router.get("/:st_num/update", (req, res) => {
+  const st_num = req.params.st_num;
 });
 
 export default router;

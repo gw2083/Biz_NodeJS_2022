@@ -43,3 +43,64 @@ article.student.search form input {
 table.student {
   width: 90%;
 }
+
+article.student.detail {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+div.student.item {
+  display: flex;
+  margin: 10px auto;
+  justify-content: center;
+}
+
+div.student.item div {
+  border: 1px solid #777;
+  margin: 5px;
+  padding: 8px;
+}
+div.student.item div:nth-of-type(1) {
+  width: 30%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: rgb(236, 210, 170);
+  color: rgb(97, 97, 97);
+  text-align: right;
+}
+div.student.item div:nth-of-type(2) {
+  width: 60%;
+  text-align: left;
+}
+
+div.student.btn_box {
+  text-align: center;
+}
+
+div.student.btn_box button {
+  padding: 12px 2em;
+  margin: 5px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+div.student button.st_update {
+  background-color: rgb(165, 144, 104);
+  color: white;
+}
+div.student button.st_delete {
+  background-color: rgb(165, 144, 104);
+  color: white;
+}
+
+div.student button.st_list {
+  background-color: rgb(165, 144, 104);
+  color: white;
+}
+
+div.student button:hover {
+  background-color: #bbb;
+  color: black;
+}
